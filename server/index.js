@@ -1,24 +1,38 @@
 const express = require("express");
 const bodyParser = require("body-parser"); //formatira u obliku JSON-a
+var con = require("./database");
 
 const cors = require("cors");
 const app = express();
 const mysql = require("mysql");
 const fetch = require("node-fetch");
 
-const api_id = "81d135abffd9dd9e927e4df49214b464"
-let url = `http://api.kursna-lista.info/${api_id}/kursna_lista/json`
-
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "nbs",
-});
+const api_id = "81d135abffd9dd9e927e4df49214b464";
+let url = `http://api.kursna-lista.info/${api_id}/kursna_lista/json`;
 
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true })); //middleware
+
+const fetchData = (url, sql, res) => {
+  fetch(url)
+    .then((result) => result.json())
+    .then((data) => {
+      let kljucevi = Object.entries(data.result);
+      kljucevi.shift();
+      let arr = [];
+
+      for (let [kljuc, val] of kljucevi) {
+        let podaci = Object.values(val).concat(kljuc);
+        arr.push(podaci);
+      }
+
+      con.query(sql, [arr], (err, result) => {
+        if (err) throw err;
+        res.send("if Inserted data");
+      });
+    });
+};
 
 app.listen(3001, () => {
   console.log("Running on port 3001");
@@ -48,43 +62,11 @@ app.post("/api/insert", (req, res) => {
       });
       let insertsql =
         "INSERT INTO valute(kupovni, srednji, prodajni, valuta) VALUES ?";
-      fetch(url)
-        .then((result) => result.json())
-        .then((data) => {
-          let kljucevi = Object.entries(data.result);
-          kljucevi.shift();
-          let arr = [];
-
-          for (let [kljuc, val] of kljucevi) {
-            let podaci = Object.values(val).concat(kljuc);
-            arr.push(podaci);
-          }
-
-          con.query(insertsql, [arr], (err, result) => {
-            if (err) throw err;
-            res.send("if Inserted data");
-          });
-        });
+      fetchData(url, insertsql, res);
     } else {
       let insertsql =
         "INSERT INTO valute(kupovni, srednji, prodajni, valuta) VALUES ?";
-      fetch(url)
-        .then((result) => result.json())
-        .then((data) => {
-          let kljucevi = Object.entries(data.result);
-          kljucevi.shift();
-          let arr = [];
-
-          for (let [kljuc, val] of kljucevi) {
-            let podaci = Object.values(val).concat(kljuc);
-            arr.push(podaci);
-          }
-
-          con.query(insertsql, [arr], (err, result) => {
-            if (err) throw err;
-            res.send("else Inserted data");
-          });
-        });
+      fetchData(url, insertsql, res);
     }
   });
 });
