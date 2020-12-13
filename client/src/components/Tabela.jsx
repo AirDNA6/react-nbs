@@ -35,7 +35,7 @@ function Tabela() {
 
   const handleDelete = () => {
     setLoading(true);
-    Axios.delete("http://localhost:3001/api/delete")
+   
     Swal.fire({
       title: 'Da li ste sigurni da zelite da obrisete listu?',
       showCancelButton: true,
@@ -43,6 +43,7 @@ function Tabela() {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
+        Axios.delete("http://localhost:3001/api/delete")
         setTimeout(() => {
           window.location.reload();
         }, 3000)
