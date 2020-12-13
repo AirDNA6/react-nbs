@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Table, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Swal from 'sweetalert2'
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -34,9 +35,23 @@ function Tabela() {
 
   const handleDelete = () => {
     setLoading(true);
-    Axios.delete("http://localhost:3001/api/delete");
-    alert("Jesi siguran?")
-    window.location.reload();
+    Axios.delete("http://localhost:3001/api/delete")
+    Swal.fire({
+      title: 'Da li ste sigurni da zelite da obrisete listu?',
+      showCancelButton: true,
+      confirmButtonText: `Obrisi`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000)
+        
+        Swal.fire('Obrisano', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('Otkazano', '', 'info')
+      }
+    })
   };
 
   return (

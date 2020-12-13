@@ -4,8 +4,6 @@ var fetchData = require("./fetchData");
 var Sql = require("./Sql");
 const popup = require('node-popup');
 
-
-
 const mySql = new Sql();
 
 const cors = require("cors");
