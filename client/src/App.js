@@ -9,7 +9,7 @@ import Tabela from "./components/Tabela";
 function App() {
   
   return (
-    <div className="App bg-index">
+    <div className="App">
       <Navbar />
       <Container>
           <Tabela />

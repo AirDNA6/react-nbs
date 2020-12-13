@@ -1,11 +1,12 @@
+body{
+  background-image: url('./components/coinst.png');
+  background-repeat: repeat-x;
+}
+
 .App {
   text-align: center;
 }
 
-.bg-index{
-  background-image: url('./components/coinst.png');
-  background-repeat: repeat-x;
-}
 
 .App-logo {
   height: 40vmin;
