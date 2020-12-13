@@ -1,14 +1,14 @@
 import React from "react";
 import { Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import './navigacija.css'
 
 function Navigacija() {
   return (
     <div>
       <Navbar expand="lg" 
-      variant="light" 
-      style={{backgroundColor: '#B1B1B1'}}
-      >
+      className="nav-op"
+      variant="light" >
         <Navbar.Brand href="/">
           <img
             width="150"
@@ -18,7 +18,7 @@ function Navigacija() {
             src="https://lh3.googleusercontent.com/proxy/9t9ozFd9KqrCiG6uhyKct8KfWOVctqjOCHgThzi2_cx02Nd-rIgvdxpIZSxiOH6K4-vJ9BMOj8Gk1PnO"
           />
         </Navbar.Brand>
-        <h2 >Trenutna kursna lista</h2>
+        <h2 className="nav-text">Trenutna kursna lista</h2>
       </Navbar>
     </div>
   );
