@@ -70,9 +70,10 @@ function Tabela() {
             </tr>
           </thead>
 
-          {nbsList.map((value) => {
+
+          {nbsList.length !== 0 ? nbsList.map((value, myKey) => {
             return (
-              <tbody>
+              <tbody key={myKey}>
                 <tr>
                   <td style={{ textTransform: "uppercase" }}>{value.valuta}</td>
                   <td>{value.kupovni}</td>
@@ -82,7 +83,8 @@ function Tabela() {
                 </tr>
               </tbody>
             );
-          })}
+          }) : <tbody><tr><td>Nema podataka</td></tr></tbody>}
+
         </Table>
 
         <Button
@@ -96,6 +98,7 @@ function Tabela() {
         <Button
           className="m-3 btn-danger"
           disabled={isLoading}
+          disabled={nbsList.length === 0 ? true : false}
           onClick={!isLoading ? handleDelete : null}>
           {" "}
           {isLoading ? "Loading..." : "Obrisi"}

@@ -2,21 +2,13 @@ html, body {
     height: 100%;
     margin: 0;
   }
+
   .content {
     min-height: calc(100vh - 70px);
-    }
-
-    /* 
-
-  .main-footer {
-  color: white; 
-  height: 50px;
-  margin-top: -50px;
-} */
+  }
 
 .footer {
     margin-top: 1rem;
-    padding: 1rem;
     background-color:rgb(218, 189, 62);
     position: relative;
     bottom: 0;

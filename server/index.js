@@ -43,14 +43,5 @@ app.post("/api/insert", (req, res) => {
 
 app.delete("/api/delete", function (req, res, next) {
   let deleteAll = mySql.deleteSql();
-  let countsql = mySql.countSql();
-  con.query(countsql, (err, result) => {
-    if (err) throw err;
-    let brojac = result[0].brojac;
-    if (brojac > 0) {
-      deleteAll
-    } else {
-    
-    }
-  });
+  deleteAll
 });

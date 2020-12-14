@@ -30,7 +30,7 @@ class Sql {
   }
 
   deleteSql() {
-    let deleteAll = "Delete from valute";
+    let deleteAll = "DELETE FROM valute WHERE datum= CURDATE()";
     con.query(deleteAll, (err, result, fields) => {
       if (err) throw err;
       console.log(result.affectedRows + " record(s) deleted");
