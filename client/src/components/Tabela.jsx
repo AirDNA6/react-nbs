@@ -3,6 +3,7 @@ import Axios from "axios";
 import { Table, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Swal from 'sweetalert2'
+import '../Footer.css'
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -35,7 +36,7 @@ function Tabela() {
 
   const handleDelete = () => {
     setLoading(true);
-   
+
     Swal.fire({
       title: 'Da li ste sigurni da zelite da obrisete listu?',
       showCancelButton: true,
@@ -47,7 +48,7 @@ function Tabela() {
         setTimeout(() => {
           window.location.reload();
         }, 3000)
-        
+
         Swal.fire('Obrisano', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('Otkazano', '', 'info')
@@ -56,7 +57,8 @@ function Tabela() {
   };
 
   return (
-    <div>
+    <div className="content">
+      <div className="content-inside">
         <Table striped bordered hover responsive="md" variant="dark" className="mt-5">
           <thead>
             <tr>
@@ -98,6 +100,7 @@ function Tabela() {
           {" "}
           {isLoading ? "Loading..." : "Obrisi"}
         </Button>
+      </div>
     </div>
   )
 }

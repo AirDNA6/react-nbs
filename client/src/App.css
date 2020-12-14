@@ -3,6 +3,7 @@ body{
   background-repeat: repeat-x;
 }
 
+
 .App {
   text-align: center;
 }
@@ -12,5 +13,6 @@ body{
   height: 40vmin;
   pointer-events: none;
 }
+
 
 
