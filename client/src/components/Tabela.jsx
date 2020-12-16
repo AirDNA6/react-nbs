@@ -25,7 +25,7 @@ function Tabela() {
     Axios.get("http://localhost:3001/api/get").then((response) => {
       setNbsList(response.data);
     });
-    
+
     //Renderuje nove podatke bez ponovnog ucitavanja
   }, [nbsList]);
 
@@ -83,7 +83,13 @@ function Tabela() {
                 </tr>
               </tbody>
             );
-          }) : <tbody><tr><td>Nema podataka</td></tr></tbody>}
+          }) : <tbody><tr>
+            <td>Nema podataka</td>
+            <td>Nema podataka</td>
+            <td>Nema podataka</td>
+            <td>Nema podataka</td>
+            <td>Nema podataka</td>
+            </tr></tbody>}
 
         </Table>
 
