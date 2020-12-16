@@ -13,6 +13,8 @@ const app = express();
 const api_id = process.env.API_KEY;
 let url = `http://api.kursna-lista.info/${api_id}/kursna_lista/json`;
 
+const PORT = 3001
+
 app.use(cors());
 app.use(express.json());
 
