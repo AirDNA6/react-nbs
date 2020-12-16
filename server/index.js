@@ -2,14 +2,15 @@ const express = require("express");
 var con = require("./database");
 var fetchData = require("./fetchData");
 var Sql = require("./Sql");
-const popup = require('node-popup');
+require('dotenv').config()
 
 const mySql = new Sql();
 
 const cors = require("cors");
 const app = express();
 
-const api_id = "81d135abffd9dd9e927e4df49214b464";
+
+const api_id = process.env.API_KEY; 
 let url = `http://api.kursna-lista.info/${api_id}/kursna_lista/json`;
 
 app.use(cors());
@@ -22,8 +23,6 @@ app.listen(3001, () => {
 app.get("/api/get", function (req, res, next) {
   mySql.getSql(res);
 });
-
-
 
 app.post("/api/insert", (req, res) => {
   let countsql = mySql.countSql();

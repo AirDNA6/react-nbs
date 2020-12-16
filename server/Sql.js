@@ -5,7 +5,7 @@ class Sql {
 
   getSql(res) {
     let sql =
-      "SELECT valuta, kupovni, srednji, prodajni, DATE_FORMAT(datum, '%b %d %Y') AS datum FROM valute WHERE status = 'A' AND datum = CURDATE()";
+      "SELECT id, valuta, kupovni, srednji, prodajni, DATE_FORMAT(datum, '%b %d %Y') AS datum FROM valute WHERE status = 'A' AND datum = CURDATE()";
     con.query(sql, (err, result) => {
       if (err) throw err;
       res.send(result);
