@@ -10,7 +10,7 @@ const cors = require("cors");
 const app = express();
 
 
-const api_id = process.env.API_KEY; 
+const api_id = process.env.API_KEY;
 let url = `http://api.kursna-lista.info/${api_id}/kursna_lista/json`;
 
 app.use(cors());
