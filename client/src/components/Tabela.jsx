@@ -25,13 +25,17 @@ function Tabela() {
     Axios.get("http://localhost:3001/api/get").then((response) => {
       setNbsList(response.data);
     });
-  }, []);
+    
+    //Renderuje nove podatke bez ponovnog ucitavanja
+  }, [nbsList]);
 
   const handleUpdate = () => {
     setLoading(true);
-    Axios.post("http://localhost:3001/api/insert").then(() => {
-      window.location.reload();
-    });
+    Axios.post("http://localhost:3001/api/insert");
+
+    //Dodaje na vec postojecih 18 recorda
+    //jos novih 18 recorda
+    setNbsList([...nbsList]);
   };
 
   const handleDelete = () => {
@@ -45,10 +49,6 @@ function Tabela() {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         Axios.delete("http://localhost:3001/api/delete")
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000)
-
         Swal.fire('Obrisano', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('Otkazano', '', 'info')
