@@ -16,8 +16,8 @@ let url = `http://api.kursna-lista.info/${api_id}/kursna_lista/json`;
 app.use(cors());
 app.use(express.json());
 
-app.listen(3001, () => {
-  console.log("Running on port 3001");
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`Running on port ${PORT}`);
 });
 
 app.get("/api/get", function (req, res, next) {
