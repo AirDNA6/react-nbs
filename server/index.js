@@ -3,23 +3,20 @@ var con = require("./database");
 var fetchData = require("./fetchData");
 var Sql = require("./Sql");
 require('dotenv').config()
-
 const mySql = new Sql();
-
 const cors = require("cors");
 const app = express();
 
+const PORT = 3001
 
 const api_id = process.env.API_KEY;
 let url = `http://api.kursna-lista.info/${api_id}/kursna_lista/json`;
 
-const PORT = 3001
-
 app.use(cors());
 app.use(express.json());
 
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`Running on port ${PORT}`);
+app.listen(3001, () => {
+  console.log("Running on port 3001");
 });
 
 app.get("/api/get", function (req, res, next) {
