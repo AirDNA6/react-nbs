@@ -6,10 +6,11 @@ require('dotenv').config()
 const mySql = new Sql();
 const cors = require("cors");
 const app = express();
+var api_id = require("./api_nbs")
 
 const PORT = 3001
 
-const api_id = process.env.API_KEY;
+
 let url = `http://api.kursna-lista.info/${api_id}/kursna_lista/json`;
 
 app.use(cors());
