@@ -22,7 +22,7 @@ function Tabela() {
   }, [isLoading]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/api/get").then((response) => {
+    Axios.get("https://dk-lista.herokuapp.com/api/get").then((response) => {
       setNbsList(response.data);
     });
 
@@ -31,7 +31,7 @@ function Tabela() {
 
   const handleUpdate = () => {
     setLoading(true);
-    Axios.post("http://localhost:3001/api/insert");
+    Axios.post("https://dk-lista.herokuapp.com/api/insert");
 
     //Dodaje na vec postojecih 18 recorda
     //jos novih 18 recorda
@@ -48,7 +48,7 @@ function Tabela() {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Axios.delete("http://localhost:3001/api/delete")
+        Axios.delete("https://dk-lista.herokuapp.com/api/delete")
         Swal.fire('Obrisano', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('Otkazano', '', 'info')
