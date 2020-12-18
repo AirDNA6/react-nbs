@@ -1,3 +1,3 @@
-const api_id = process.env.REACT_APP_API_KEY
+const api_id = process.env.process.NODE_ENV
 
 module.exports = api_id
