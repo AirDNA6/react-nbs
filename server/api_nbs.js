@@ -1,3 +1,3 @@
-const api_id = process.env.process.NODE_ENV
+const api_id = process.env.NODE_ENV
 
 module.exports = api_id
