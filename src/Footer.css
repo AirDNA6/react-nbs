@@ -1,0 +1,19 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .content {
+    min-height: calc(100vh - 70px);
+  }
+
+.footer {
+    margin-top: 1rem;
+    background-color:rgb(218, 189, 62);
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-weight: bold;
+}
+
