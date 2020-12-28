@@ -125,7 +125,7 @@ function Tabela() {
         table="table-to-xls"
         filename="excelFile"
         sheet="sheet 1"
-        buttonText="PREUZMI CSV"
+        buttonText="PREUZMI XLS"
          />
       </div>
     </div>
