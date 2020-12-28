@@ -121,7 +121,6 @@ function Tabela() {
         </Button>
 
         <ReactHTMLTableToExcel 
-        disabled={isLoading}
         disabled={nbsList.length === 0 ? true : false}
         className="btn btn-success"
         table="table-to-xls"
