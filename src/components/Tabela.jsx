@@ -1,4 +1,6 @@
+
 import React, { useState, useEffect } from "react";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import Axios from "axios";
 import { Table, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -67,7 +69,7 @@ function Tabela() {
   return (
     <div className="content">
       <div className="content-inside">
-        <Table striped bordered hover responsive="md" variant="dark" className="mt-5">
+        <Table striped bordered hover responsive="md" variant="dark" className="mt-5" id="table-to-xls">
           <thead>
             <tr>
               <th>Valuta</th>
@@ -117,6 +119,14 @@ function Tabela() {
           {" "}
           {isLoading ? "Loading..." : "Obrisi"}
         </Button>
+
+        <ReactHTMLTableToExcel 
+        className="btn btn-success"
+        table="table-to-xls"
+        filename="excelFile"
+        sheet="sheet 1"
+        buttonText="EXPORT"
+         />
       </div>
     </div>
   )
