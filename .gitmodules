@@ -1,0 +1,3 @@
+[submodule "KursnalistaClient"]
+	path = KursnalistaClient
+	url = https://github.com/AirDNA6/KursnalistaClient.git
