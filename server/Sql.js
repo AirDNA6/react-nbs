@@ -5,9 +5,9 @@ class Sql {
 
   getSql(res) {
     let sql =
-      "SELECT id, valuta, kupovni, srednji, prodajni, DATE_FORMAT(datum, '%b %d %Y') AS datum FROM valute WHERE status = 'A' AND datum = CURDATE()";
+      "SELECT id, valuta, kupovni, srednji, prodajni, DATE_FORMAT(datum, '%b %d %Y') AS datum FROM valute WHERE status = 'A' AND date_format(datum, '%M%D%Y') = date_format(sysdate(), '%M%D%Y')";
     con.query(sql, (err, result) => {
-      if (err) throw err;
+      
       res.send(result);
     });
   }
@@ -18,21 +18,21 @@ class Sql {
 
   updateSql() {
     let updatesql =
-      "UPDATE valute SET status='I' WHERE datum = CURDATE() AND status = 'A'";
+      "UPDATE valute SET status='I' WHERE status = 'A' AND date_format(datum, '%M%D%Y') = date_format(sysdate(), '%M%D%Y')";
     con.query(updatesql, (err, result, fields) => {
-      if (err) throw err;
+      
       console.log(result.affectedRows + " record(s) updated");
     });
   }
 
   countSql() {
-    return "SELECT COUNT(*) AS brojac FROM valute WHERE status = 'A' AND datum = CURDATE()";
+    return "SELECT COUNT(*) AS brojac FROM valute WHERE status = 'A' AND date_format(datum, '%M%D%Y') = date_format(sysdate(), '%M%D%Y')";
   }
 
   deleteSql() {
-    let deleteAll = "DELETE FROM valute WHERE datum= CURDATE()";
+    let deleteAll = "DELETE FROM valute";
     con.query(deleteAll, (err, result, fields) => {
-      if (err) throw err;
+      
       console.log(result.affectedRows + " record(s) deleted");
     });
   }
