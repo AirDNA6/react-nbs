@@ -1,7 +1,6 @@
 const fetch = require("node-fetch");
 var con = require("./database");
 
-
 const fetchData = (url, sql, res) => {
     fetch(url)
         .then((result) => result.json())

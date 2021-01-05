@@ -8,15 +8,10 @@ const cors = require("cors");
 const app = express();
 var api_id = require("./api_nbs")
 
-
-
-
 let url = `http://api.kursna-lista.info/${api_id}/kursna_lista/json`;
 
 app.use(cors());
 app.use(express.json());
-
-
 
 app.get("/api/get", function (req, res, next) {
   mySql.getSql(res);
