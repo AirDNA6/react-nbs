@@ -16,19 +16,9 @@ const mySql = new Sql();
 const cors = require("cors");
 const app = express();
 
-var api_id = require("./api_nbs")
-
 let url = `http://api.kursna-lista.info/${api_id}/kursna_lista/json`;
 
 app.use(express.json());
-
-app.use(
-  cors({
-    origin: ["https://kursnalista.netlify.app"],
-    methods: ["GET", "POST", "DELETE"],
-    credentials: true,
-  })
-);
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
